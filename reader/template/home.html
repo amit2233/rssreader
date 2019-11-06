@@ -1,0 +1,23 @@
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<form action="/feeds" method="post">
+    {% csrf_token %}
+    <label for="url"></label>
+    <input style="margin-left: 35%" class="w3-margin-top" id="url" type="text" name="url" placeholder="url">
+    <input type="submit" value="Submit">
+</form>
+
+
+<ul class="w3-ul w3-card-4">
+{% for post in posts%}
+  <li class="w3-bar">
+      <div class="w3-bar-item">
+      <span class="w3-large">{{ post.title }}</span><br>
+      {{ post.body | safe }}
+      {% if post.link %}
+        <a href="{{ post.link }}" class="" target="_blank">Read More</a>
+      {% endif %}
+    </div>
+  </li>
+{% endfor %}  
+</ul>
