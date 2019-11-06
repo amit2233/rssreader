@@ -50,7 +50,7 @@ def rss_feeds(request):
             source.etag = None                                   
         
         try:
-            source.last_modified = ret.headers["Last-Modified"]
+            sourhttps://zeenews.india.com/rss/india-national-news.xmlce.last_modified = ret.headers["Last-Modified"]
         except Exception as ex:
             source.last_modified = None                                   
 
@@ -67,21 +67,18 @@ def rss_feeds(request):
         source.save()    
         entries = content['entries']
 
-        for e in entries:
+        for e inhttps://zeenews.india.com/rss/india-national-news.xml entries:
             body = ""
 
             if hasattr(e, "summary"):
-                print("summary", e.summary)
                 if len(e.summary) > len(body):
                     body = e.summary
             
             if hasattr(e, "summary_detail"):
-                print("summary_detail", e.summary_detail.value)
                 if len(e.summary_detail.value) > len(body):
                     body = e.summary_detail.value        
 
             if hasattr(e, "description"):
-                print("des", e.description)
                 if len(e.description) > len(body):
                     body = e.description
 
@@ -110,7 +107,6 @@ def rss_feeds(request):
                     guid = e.link
                 except:
                     guid = ""
-            print(title)
             post = Post.objects.create(source=source, title=title, link=link,
             guid=guid, body=body, created=created)
 
